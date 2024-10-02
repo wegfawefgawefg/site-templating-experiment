@@ -1,0 +1,53 @@
+<div id="scrolling-poem">
+    <style>
+        #scrolling-poem {
+            width: 300px;
+            height: 200px;
+            overflow: hidden;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        #scrolling-poem .poem {
+            animation: scroll 20s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateY(100%);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+    </style>
+
+    <div class="poem">
+        <h3>Data's poem about his cat Spot:</h3>
+        <p>
+            spot is a cat<br>
+            he is very fat<br>
+            he likes to eat<br>
+            he likes to sleep<br>
+            he likes to play<br>
+            kill the mouse
+        </p>
+    </div>
+
+    <script>
+        (function () {
+            function resetScroll() {
+                const poem = document.querySelector('#scrolling-poem .poem');
+                poem.style.animation = 'none';
+                poem.offsetHeight; // Trigger reflow
+                poem.style.animation = null;
+            }
+
+            setInterval(resetScroll, 20000); // Reset every 20 seconds
+        })();
+    </script>
+</div>
